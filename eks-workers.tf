@@ -5,7 +5,7 @@ data "aws_ami" "eks-worker" {
   }
 
   most_recent = true
-  owners      = ["384636441599"] # Amazon
+  owners      = ["717111728522"] # Amazon
 }
 
 # EKS currently documents this required userdata for EKS worker nodes to
@@ -27,7 +27,7 @@ resource "aws_launch_configuration" "demo" {
   iam_instance_profile = aws_iam_instance_profile.demo-node.name
   image_id = data.aws_ami.eks-worker.id
   instance_type = "t2.medium"
-  key_name = "dev"
+  key_name = "k8s"
   name_prefix = "terraform-eks-demo"
   security_groups = [aws_security_group.demo-node.id]
   user_data_base64 = base64encode(local.demo-node-userdata)

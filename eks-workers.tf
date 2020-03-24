@@ -24,13 +24,13 @@ USERDATA
 
 resource "aws_launch_configuration" "demo" {
   associate_public_ip_address = true
-  iam_instance_profile = aws_iam_instance_profile.demo-node.name
-  image_id = data.aws_ami.eks-worker.id
+  iam_instance_profile ="${aws_iam_instance_profile.demo-node.name}"
+  image_id = "${data.aws_ami.eks-worker.id}"
   instance_type = "t2.medium"
   key_name = "k8s"
   name_prefix = "terraform-eks-demo"
-  security_groups = [aws_security_group.demo-node.id]
-  user_data_base64 = base64encode(local.demo-node-userdata)
+  security_groups = ["${aws_security_group.demo-node.id}"]
+  user_data_base64 = "${base64encode(local.demo-node-userdata)}"
 
   lifecycle {
     create_before_destroy = true
@@ -56,6 +56,49 @@ resource "aws_autoscaling_group" "demo" {
   tag {
     key = "Name"
     value = "terraform-eks-demo"
+1
+
+data "aws_ami" "eks-worker" {
+
+2
+
+  filter {
+
+3
+
+    name   = "name"
+
+4
+
+49
+
+  # v0.11, but is no longer supported in Terraform v0.12.
+
+
+        
+
+
+  
+    
+    # v0.11, but is no longer supported in Terraform v0.12.
+
+    values = ["amazon-eks-node-${aws_eks_cluster.demo.version}-v*"]
+
+5
+
+  }
+
+6
+
+​
+
+7
+
+  most_recent = true
+
+8
+
+  owners      = ["717111728522"] # Amazon
     propagate_at_launch = true
   }
 

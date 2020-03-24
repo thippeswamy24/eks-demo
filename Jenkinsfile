@@ -15,7 +15,7 @@ pipeline {
         stage('git clone') {
             steps {
                 sh 'sudo rm -rf /home/ec2-user/newfolder'
-                sh 'sudo rm -rf *;sudo git clone https://github.com/thippeswamy24/eks.git /home/ec2-user/newfolder'
+                sh 'sudo rm -rf *;sudo git clone https://github.com/thippeswamy24/eks-demo.git /home/ec2-user/newfolder'
             }
         }
        // stage('tfsvars create') {

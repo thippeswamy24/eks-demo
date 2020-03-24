@@ -56,49 +56,6 @@ resource "aws_autoscaling_group" "demo" {
   tag {
     key = "Name"
     value = "terraform-eks-demo"
-1
-
-data "aws_ami" "eks-worker" {
-
-2
-
-  filter {
-
-3
-
-    name   = "name"
-
-4
-
-49
-
-  # v0.11, but is no longer supported in Terraform v0.12.
-
-
-        
-
-
-  
-    
-    # v0.11, but is no longer supported in Terraform v0.12.
-
-    values = ["amazon-eks-node-${aws_eks_cluster.demo.version}-v*"]
-
-5
-
-  }
-
-6
-
-​
-
-7
-
-  most_recent = true
-
-8
-
-  owners      = ["717111728522"] # Amazon
     propagate_at_launch = true
   }
 

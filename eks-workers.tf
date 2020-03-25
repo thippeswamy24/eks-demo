@@ -26,7 +26,7 @@ resource "aws_launch_configuration" "demo" {
   associate_public_ip_address = true
   iam_instance_profile = aws_iam_instance_profile.demo-node.name   #changed
   image_id = data.aws_ami.eks-worker.id   #changed
-  instance_type = "t2.medium"
+  instance_type = "t3.medium"
   key_name = "k8s"
   name_prefix = "terraform-eks-demo"
   security_groups = [aws_security_group.demo-node.id]        #changed

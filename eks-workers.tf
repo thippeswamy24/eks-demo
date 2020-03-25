@@ -25,7 +25,7 @@ USERDATA
 resource "aws_launch_configuration" "demo" {
   associate_public_ip_address = true
   iam_instance_profile = aws_iam_instance_profile.demo-node.name   #changed
-  image_id = data.aws_ami.eks-worker.id   #changed
+  image_id = ami-0fc61db8544a617ed   #changed
   instance_type = "t3.medium"
   key_name = "k8s"
   name_prefix = "terraform-eks-demo"
